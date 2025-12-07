@@ -12,7 +12,7 @@ Webová aplikace pro zakázkové dorty. Momentálně umožňuje uživatelům vyt
 ## Instalace
 1. Naklonování repozitáře:
 ```
-git clone "https://github.com/notvladbalan/angelas-cakes-3"
+git clone https://github.com/notvladbalan/angelas-cakes-3
 cd angelas-cakes-3
 ```
 2. Nainstalování závislostí:
@@ -54,4 +54,4 @@ Projekt obsahuje základný Playwright e2e test, který ověřuje načtení hlav
 npx playwright test
 ```
 
-> Poznámka: složitější testy (např. přidávání recenzí) by vyžadovaly přihlášení přes Google OAuth. Pro tento projekt je použit pouze jednoduchý smoke test.
+> Poznámka: složitější testy (např. přidávání recenzí) by vyžadovaly přihlášení přes Google OAuth, což je pro tento projekt moc komplikované. Pro tento projekt je použit pouze jednoduchý smoke test.
