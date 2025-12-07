@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Angela’s Cakes
 
-## Getting Started
+Webová aplikace pro zakázkové dorty. Momentálně umožňuje uživatelům vytvořit účet, prohlížet dorty a přidávat recenze.
 
-First, run the development server:
+## Požadavky
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js ≥ 18
+- npm / yarn / pnpm
+- PostgreSQL databáze (hostovaná např. přes [Neon](https://neon.com/))
+- [Google OAuth](https://console.cloud.google.com/apis/dashboard?pli=1) účet pro přihlášení uživatele (pouze při plném spuštění)
+
+## Instalace
+1. Naklonování repozitáře:
+```
+git clone "https://github.com/notvladbalan/angelas-cakes-3"
+cd angelas-cakes-3
+```
+2. Nainstalování závislostí:
+```
+npm install
+# nebo
+yarn
+# nebo
+pnpm install
+```  
+
+## Nastavení databáze
+
+1. Vytvoře souboru `.env` v kořenovém adresáři:
+```
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+NEXTAUTH_URL="http://localhost:3000"
+```
+2. Spustění migrace Prisma:
+```
+npx prisma migrate dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Spuštění projektu
+```
+npm run dev
+# nebo
+yarn dev
+# nebo
+pnpm dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Otevření [http://localhost:3000](http://localhost:3000/) v prohlížeči.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Testy
 
-## Learn More
+Projekt obsahuje základný Playwright e2e test, který ověřuje načtení hlavní stránky:
+```
+npx playwright test
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Poznámka: složitější testy (např. přidávání recenzí) by vyžadovaly přihlášení přes Google OAuth. Pro tento projekt je použit pouze jednoduchý smoke test.
